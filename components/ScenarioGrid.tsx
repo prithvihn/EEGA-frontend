@@ -5,9 +5,11 @@ import { MOCK_SCENARIOS } from '@/lib/mockData';
 import { useEmergencyStore } from '@/store/emergencyStore';
 
 export function ScenarioGrid() {
-  const submitEmergency = useEmergencyStore((s) => s.submitEmergency);
+  const { submitEmergency, setEmergencyType, setEmergencyText } = useEmergencyStore();
 
-  const handleScenarioClick = (scenarioId: number) => {
+  const handleScenarioClick = (scenarioId: number, scenarioName: string) => {
+    setEmergencyType(scenarioName);
+    setEmergencyText(`I need help with a ${scenarioName} emergency`);
     submitEmergency(scenarioId);
     document.getElementById('results-panel')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -34,7 +36,7 @@ export function ScenarioGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.05 }}
-            onClick={() => handleScenarioClick(scenario.id)}
+            onClick={() => handleScenarioClick(scenario.id, scenario.name)}
             className="group scenario-card glass-panel rounded-lg p-6 sm:p-8 flex flex-col items-center justify-center gap-3 hover:scale-105 transition-all duration-300 text-left"
             style={{ '--glow': scenario.glowColor } as React.CSSProperties}
           >

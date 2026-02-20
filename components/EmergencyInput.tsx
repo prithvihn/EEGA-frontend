@@ -12,13 +12,14 @@ export function EmergencyInput() {
     isRecording,
     toggleRecording,
     isLoading,
-    submitEmergency,
+    analyzeEmergency,
+    error,
   } = useEmergencyStore();
 
   useSpeechRecognition();
 
   const handleSubmit = () => {
-    submitEmergency();
+    analyzeEmergency();
   };
 
   return (
@@ -99,6 +100,17 @@ export function EmergencyInput() {
             )}
           </Button>
         </div>
+
+        {/* Error message */}
+        {error && (
+          <motion.p
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-3 font-body text-sm text-emergency-red bg-emergency-red/10 border border-emergency-red/30 rounded-lg px-4 py-2"
+          >
+            ⚠️ {error}
+          </motion.p>
+        )}
 
         <p className="mt-4 font-body text-xs text-white/50 max-w-xl">
           EEGA uses AI. Always call official emergency services (100/108/112) in life-threatening situations.
