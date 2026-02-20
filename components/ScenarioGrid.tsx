@@ -35,13 +35,23 @@ export function ScenarioGrid() {
             viewport={{ once: true }}
             transition={{ delay: i * 0.05 }}
             onClick={() => handleScenarioClick(scenario.id)}
-            className="group glass-panel rounded-lg p-6 sm:p-8 flex flex-col items-center justify-center gap-3 hover:border-emergency-red/50 hover:scale-105 transition-all duration-300 text-left"
+            className="group scenario-card glass-panel rounded-lg p-6 sm:p-8 flex flex-col items-center justify-center gap-3 hover:scale-105 transition-all duration-300 text-left"
+            style={{ '--glow': scenario.glowColor } as React.CSSProperties}
           >
-            <span className="text-4xl sm:text-5xl">{scenario.icon}</span>
+            <div className="scenario-icon-wrap relative flex items-center justify-center">
+              <div
+                className="scenario-glow-halo absolute rounded-full"
+                style={{ background: `radial-gradient(circle, ${scenario.glowColor}40 0%, ${scenario.glowColor}15 40%, transparent 70%)` }}
+              />
+              <span className="scenario-icon text-4xl sm:text-5xl relative z-10">{scenario.icon}</span>
+            </div>
             <span className="font-heading text-sm sm:text-base tracking-wider text-white">
               {scenario.name}
             </span>
-            <span className="font-body text-xs text-emergency-red opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <span
+              className="scenario-cta font-body text-xs opacity-0 group-hover:opacity-100"
+              style={{ color: scenario.glowColor }}
+            >
               CLICK TO GET GUIDANCE
             </span>
           </motion.button>

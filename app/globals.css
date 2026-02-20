@@ -4,12 +4,12 @@
 
 @layer base {
   :root {
-    --background: #0A0A0B;
+    --background: #0a0a0b;
     --surface: #111114;
-    --emergency-red: #FF2D2D;
-    --electric-cyan: #00F5FF;
-    --font-heading: 'Bebas Neue', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
+    --emergency-red: #ff2d2d;
+    --electric-cyan: #00f5ff;
+    --font-heading: "Bebas Neue", sans-serif;
+    --font-body: "DM Sans", sans-serif;
   }
 
   html {
@@ -27,7 +27,7 @@
 
 /* Scanline overlay */
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
@@ -46,7 +46,7 @@ body::before {
 
 /* Noise texture via SVG filter */
 body::after {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
@@ -77,6 +77,69 @@ body::after {
 .glass-panel:hover {
   border-color: rgba(255, 45, 45, 0.4);
   box-shadow: 0 0 20px rgba(255, 45, 45, 0.1);
+}
+
+/* ── Emergency Scenario Card Glow ── */
+.scenario-card {
+  --glow: #ef4444;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition:
+    box-shadow 300ms ease,
+    border-color 300ms ease,
+    transform 300ms ease,
+    background 300ms ease;
+}
+
+.scenario-card:hover {
+  border-color: var(--glow);
+  box-shadow:
+    0 0 15px color-mix(in srgb, var(--glow) 40%, transparent),
+    0 0 45px color-mix(in srgb, var(--glow) 20%, transparent),
+    inset 0 0 30px color-mix(in srgb, var(--glow) 6%, transparent);
+  background: color-mix(in srgb, var(--glow) 5%, rgba(255, 255, 255, 0.03));
+}
+
+.scenario-card .scenario-icon-wrap {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scenario-card .scenario-glow-halo {
+  width: 90px;
+  height: 90px;
+  filter: blur(14px);
+  opacity: 0.7;
+  animation: iconGlowPulse 2.5s ease-in-out infinite;
+  transition: opacity 300ms ease, filter 300ms ease;
+}
+
+.scenario-card:hover .scenario-glow-halo {
+  opacity: 1;
+  filter: blur(18px);
+}
+
+@keyframes iconGlowPulse {
+  0%, 100% { opacity: 0.5; transform: scale(0.95); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.scenario-card .scenario-icon {
+  transition: transform 300ms ease;
+  display: inline-block;
+}
+
+.scenario-card:hover .scenario-icon {
+  transform: scale(1.1);
+}
+
+.scenario-card .scenario-cta {
+  transition:
+    opacity 200ms ease,
+    color 200ms ease;
 }
 
 /* Radar pulse animation */
@@ -115,8 +178,13 @@ body::after {
 
 /* Blinking dot */
 @keyframes blinkDot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .blink-dot {
@@ -125,8 +193,13 @@ body::after {
 
 /* Soundwave bars */
 @keyframes soundwave {
-  0%, 100% { transform: scaleY(0.3); }
-  50% { transform: scaleY(1); }
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
 }
 
 .soundwave-bar {
@@ -136,8 +209,12 @@ body::after {
 
 /* Marquee scroll */
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .marquee-content {
@@ -203,7 +280,7 @@ body::after {
 
 .scene-wrap::before,
 .scene-wrap::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 60px;
   height: 60px;
