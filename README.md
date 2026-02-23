@@ -267,7 +267,7 @@ Open **http://localhost:3000** 🎉
 | Service | Platform | URL |
 |---------|----------|-----|
 | Frontend | Vercel | [eega-ai.vercel.app](https://eega-ai.vercel.app) |
-| Backend | Render (Free Tier) | eega-frontend.onrender.com |
+| Backend | Render (Free Tier) | [eega-backend](https://eega-frontend.onrender.com) |
 
 > ⏳ **Note on Backend Performance:** The backend is hosted on Render's free tier which **spins down after inactivity**. Your first request after a period of inactivity may take **40–50 seconds** to respond while the server wakes up. Subsequent requests will be fast. Please be patient on first load!
 
@@ -296,13 +296,7 @@ EEGA is an AI-powered **guidance tool** and is **not a substitute for profession
 > - 👮 **100** — Police
 > - 🏥 **112** — National Emergency Number
 
----
 
-## 📄 License
-
-This project is licensed under the **MIT License** — feel free to use, modify and distribute.
-
----
 
 <div align="center">
 
