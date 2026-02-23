@@ -15,7 +15,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",
-        "https://eega-ai.vercel.app/"  # ← add your Vercel URL here
+        "https://eega-ai.vercel.app"  # ← add your Vercel URL here
     ],
     allow_methods=["*"],
     allow_headers=["*"],
